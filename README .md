@@ -24,10 +24,16 @@
 ### 主な利用シーン
 月別リストの獲得率などを知りたい時に活用できます。
 
-## 設計書
+## ER図
+ - https://app.diagrams.net/
+
+## テーブル定義書
+ - https://docs.google.com/spreadsheets/d/1RS9y3UvzdVj4OQy1lA6OOjdD9jGfevNRtEzJk8N21H4/edit#gid=0
 
 ## ワイヤーフレーム
  - https://docs.google.com/drawings/d/15otMRYoqWVwYXgy0SiZWwsGcvjQL0tqcUCLDYHuQwt8/edit
+ - https://docs.google.com/spreadsheets/d/1wXhgFZ25Xko77TMdot2K0XNuroDlBztEQHkXynoTKnI/edit#gid=1736375453
+ 
 
 ## チャレンジ要素一覧
 - https://docs.google.com/spreadsheets/d/1x47ln65x-cejDwZEyxz5fvoELLcQKXg9C_1ayalG9hE/edit#gid=0
