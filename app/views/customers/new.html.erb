@@ -7,8 +7,13 @@
   <%= f.text_field :first_name_kana %>
   <%= f.select :gender_id, Customer.gender_ids.keys.map %>
   <h4>生年月日</h4>
-  <%= f.date_select :birth_date, use_month_numbers: true, strat_year: 1942, end_year: 2002, default: Date.new(1962, 1, 1), date_separator: '/' %>
-  <%= f.select :age, Date.today.strftime("%Y%m%d").to_i - @customer.birthday.strftime("%Y%m%d").to_i/ 10000 %>
+  <%= f.date_select :birthday, 
+                    use_month_numbers: true, 
+                    start_year: 1942, 
+                    end_year: 2002, 
+                    default: Date.new(1962, 1, 1),
+                    date_separator: '/' %>
+  <%= f.text_field :age %>
   <h4>郵便番号</h4>
   <%= f.text_field :post_code %>
   <h4>住所</h4>

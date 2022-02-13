@@ -7,3 +7,21 @@
   <p>自宅電話<%= @customer.home_phone_number %></p>
   <p>携帯電話<%= @customer.phone_number %></p>
 </div>
+
+<div>
+  <% @customer.post_comments.each do |post_comment| %>
+    <%= post_comment.create_at.strftime('%Y/%m/%d') %>
+    <%#= 荷電方法 %>
+    <%= post_comment.user_name %>
+    <%#= 荷電対象者 %>
+    <%#= ステータス %>
+    <%= post_comment.comment %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with(model:[@customer, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment %>
+    <%= f.submit "新規コメント" %>
+  <% end %>
+</div>

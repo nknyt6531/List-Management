@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.save
-    #redirect_to
+    redirect_to customer_path(customer.id)
   end
 
   def show
@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-     @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.destroy
     #redirect_to
   end
@@ -33,10 +33,11 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
+    birthday = Date.new(params[:customer]['birthday(1i)'].to_i,params[:customer]['birthday(2i)'].to_i,params[:customer]['birthday(3i)'].to_i)
     params.require(:customer).permit(
       :last_name, :first_name, :last_name_kana, :first_name_kana,
-      :gender_id, :birthday, :age, :post_code, :home_phone_number,
-      :phone_number, :address)
+      :gender_id, :age, :post_code, :home_phone_number,
+      :phone_number, :address).merge(birthday: birthday)
   end
 
 end
