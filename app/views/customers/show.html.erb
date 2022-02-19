@@ -9,19 +9,27 @@
 </div>
 
 <div>
-  <% @customer.post_comments.each do |post_comment| %>
-    <%= post_comment.create_at.strftime('%Y/%m/%d') %>
-    <%#= 荷電方法 %>
-    <%= post_comment.user_name %>
-    <%#= 荷電対象者 %>
-    <%#= ステータス %>
-    <%= post_comment.comment %>
+  <%= form_with(model: @post_comment, url: user_post_comments_path(@user.id), local: true) do |f| %>
+    <%= f.select :method, PostComment.methods.keys.map %>
+    <%= f.select :target, PostComment.targets.keys.map %>
+    <%= f.select :status, PostComment.statuses.keys.map %>
+    <%= f.text_area :comment %>
+    <%= f.submit "新規コメント" %>
   <% end %>
 </div>
 
 <div>
-  <%= form_with(model:[@customer, @post_comment], local: true) do |f| %>
-    <%= f.text_area :comment %>
-    <%= f.submit "新規コメント" %>
+  <% @customer.post_comments.each do |post_comment| %>
+    <%= post_comment.create_at.strftime('%Y/%m/%d') %>
+    <%= post_comment.method %>
+    <%= post_comment.user_name %>
+    <%= post_comment.target %>
+    <%= post_comment.status %>
+    <%= post_comment.comment %>
+    <% if post_comment.user == current_user %>
+    <div>
+      <%= link_to "削除", user_post_comment_path(post_comment.user, post_comment), method: :delete %>
+    </div>
+    <% end %>
   <% end %>
 </div>

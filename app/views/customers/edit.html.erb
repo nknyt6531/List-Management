@@ -1,4 +1,4 @@
-<h2>新規顧客登録</h2>
+<h2>顧客情報編集</h2>
 <%= form_with model: @customer, local:true do |f| %>
   <h4>名前</h4>
   <%= f.text_field :last_name %>
@@ -7,10 +7,10 @@
   <%= f.text_field :first_name_kana %>
   <%= f.select :gender_id, Customer.gender_ids.keys.map %>
   <h4>生年月日</h4>
-  <%= f.date_select :birthday,
-                    use_month_numbers: true,
-                    start_year: 1942,
-                    end_year: 2002,
+  <%= f.date_select :birthday, 
+                    use_month_numbers: true, 
+                    start_year: 1942, 
+                    end_year: 2002, 
                     default: Date.new(1962, 1, 1),
                     date_separator: '/' %>
   <%= f.text_field :age %>

@@ -29,12 +29,16 @@ ActiveRecord::Schema.define(version: 2022_02_13_110342) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.text "comment"
-    t.string "user_id"
-    t.string "integer"
-    t.integer "post_customer_id"
+    t.text "comment", null: false
+    t.integer "user_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "method", null: false
+    t.integer "target", null: false
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_post_comments_on_customer_id"
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
