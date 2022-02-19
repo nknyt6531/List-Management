@@ -1,4 +1,6 @@
 class PostCommentsController < ApplicationController
+  before_action :authenticate_user!,except: [:show]
+  
   def create
     @customer = Customer.find(params[:customer_id])
     @comment = current_user.post_comments.new(post_comment_params)
