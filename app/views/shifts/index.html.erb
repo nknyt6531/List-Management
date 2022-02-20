@@ -1,0 +1,46 @@
+<h2><%= @user %></h2>
+
+
+<%= form_with model: @shift, local:true do |f| %>
+  <h4>日付</h4>
+  <%= f.date_select :time,
+                    use_two_digit_numbers: true,
+                    start_year: 2022,
+                    end_year: 2022,
+                    default: Date.today,
+                    date_separator: '/' %>
+  <h4>Start</h4>
+  <%= f.time_field :start %>
+  <h4>Finish</h4>
+  <%= f.time_field :finish %>
+  <%= f.submit 'シフト入力' %>
+<% end %>
+
+<%= month_calendar events: @user.shifts do |date, shifts| %>
+  <%= date.day %>
+  <% shifts.each do |shifts| %>
+    <%= link_to edit_shift_path(shift.id) do %>
+      <%= shift.start %>
+      <%= shift.finish %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>開始</th>
+      <th>終了</th>
+      <th>稼働時間</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shifts.each.do |user| %>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
