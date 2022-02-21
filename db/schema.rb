@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_134031) do
   create_table "customers", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "last_name_kana", null: false
+    t.string "first_name", null: false
     t.string "first_name_kana", null: false
     t.integer "gender_id", null: false
     t.date "birthday", null: false
@@ -25,7 +26,6 @@ ActiveRecord::Schema.define(version: 2022_02_19_134031) do
     t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
   end
 
   create_table "post_comments", force: :cascade do |t|

@@ -6,4 +6,8 @@ class PostComment < ApplicationRecord
                勝負: 6, web誘導: 7, 成立: 8 }
   belongs_to :user
   belongs_to :customer
+
+  validates :method, presence: true
+  validates :target, presence: true
+  validates :status, presence: true
 end
