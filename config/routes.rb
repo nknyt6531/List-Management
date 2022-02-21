@@ -4,5 +4,5 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
-  resources :shifts, only: [:index, :show, :cretae, :edit, :update, :destroy]
+  resources :shifts, only: [:index, :show, :create, :edit, :update, :destroy]
 end

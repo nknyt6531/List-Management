@@ -9,19 +9,21 @@
                     end_year: 2022,
                     default: Date.today,
                     date_separator: '/' %>
-  <h4>Start</h4>
+  <h4>開始</h4>
   <%= f.time_field :start %>
-  <h4>Finish</h4>
+  <h4>終了</h4>
   <%= f.time_field :finish %>
   <%= f.submit 'シフト入力' %>
 <% end %>
 
-<%= month_calendar events: @user.shifts do |date, shifts| %>
-  <%= date.day %>
-  <% shifts.each do |shifts| %>
-    <%= link_to edit_shift_path(shift.id) do %>
-      <%= shift.start %>
-      <%= shift.finish %>
+<% if @user.shifts.present? %>
+  <%= month_calendar events: @user.shifts do |date, shifts| %>
+    <%= date.day %>
+    <% @shifts.each do |shift| %>
+      <%= link_to edit_shift_path(shift.id) do %>
+        <%= shift.start %>
+        <%= shift.finish %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
@@ -38,9 +40,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @shifts.each.do |user| %>
+    <% @shifts.each do |user| %>
     <tr>
-      <td></td>
+      <td><%= user.date %></td>
+      <td><%= user.start %></td>
+      <td><%= user.finish %></td>
+      <td><%= user.strat - user.finish %></td>
+      <td><%= link_to "編集" %></td>
+      <td><%= link_to "削除" %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>

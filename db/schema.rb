@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2022_02_19_134031) do
   create_table "customers", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "last_name_kana", null: false
-    t.string "first_name", null: false
     t.string "first_name_kana", null: false
     t.integer "gender_id", null: false
     t.date "birthday", null: false
@@ -26,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_134031) do
     t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -43,10 +43,9 @@ ActiveRecord::Schema.define(version: 2022_02_19_134031) do
 
   create_table "shifts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.date "time", null: false
-    t.integer "working_time", null: false
-    t.date "start", null: false
-    t.date "finish", null: false
+    t.date "date", null: false
+    t.time "start", null: false
+    t.time "finish", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shifts_on_user_id"
