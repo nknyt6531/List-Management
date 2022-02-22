@@ -4,7 +4,9 @@ class ShiftsController < ApplicationController
   def index
     @shift = Shift.new
     @user = current_user
-    @shifts = Shift.where(user_id: current_user)
+    @beginning_of_day = Date.today.beginning_of_month
+    @end_of_day = Date.today.end_of_month
+    @shifts = Shift.where(user_id: current_user, date: @beginning_of_day..@end_of_day)
   end
 
   def create
@@ -37,7 +39,7 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:date, :start, :finish)
+    params.require(:shift).permit(:date, :start, :finish).merge(user_id: current_user.id)
   end
 
 end

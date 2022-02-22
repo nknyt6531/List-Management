@@ -3,7 +3,7 @@
 
 <%= form_with model: @shift, local:true do |f| %>
   <h4>日付</h4>
-  <%= f.date_select :time,
+  <%= f.date_select :date,
                     use_two_digit_numbers: true,
                     start_year: 2022,
                     end_year: 2022,
@@ -19,10 +19,10 @@
 <% if @user.shifts.present? %>
   <%= month_calendar events: @user.shifts do |date, shifts| %>
     <%= date.day %>
-    <% @shifts.each do |shift| %>
+    <% shifts.each do |shift| %>
       <%= link_to edit_shift_path(shift.id) do %>
-        <%= shift.start %>
-        <%= shift.finish %>
+        <%= shift.start.strftime('%X') %>
+        <%= shift.finish.strftime('%X') %>
       <% end %>
     <% end %>
   <% end %>
@@ -43,11 +43,11 @@
     <% @shifts.each do |user| %>
     <tr>
       <td><%= user.date %></td>
-      <td><%= user.start %></td>
-      <td><%= user.finish %></td>
-      <td><%= user.strat - user.finish %></td>
-      <td><%= link_to "編集" %></td>
-      <td><%= link_to "削除" %></td>
+      <td><%= user.start.strftime("%X") %></td>
+      <td><%= user.finish.strftime("%X") %></td>
+      <td><%= user.working_time %></td>
+      <td><%= link_to "編集", edit_shift_path(@shifts) %></td>
+      <td><%= link_to "削除", shift_path(@shifts), method: :delete %>, </td>
     </tr>
     <% end %>
   </tbody>
