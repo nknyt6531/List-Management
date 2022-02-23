@@ -6,7 +6,7 @@ class Shift < ApplicationRecord
   end
 
   def working_time
-      ((self.finish - self.start)/3600)-1
+    ((self.finish - self.start)/3600)-1
   end
   
   validates :date, presence: true

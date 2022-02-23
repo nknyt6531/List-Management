@@ -46,8 +46,8 @@
       <td><%= user.start.strftime("%X") %></td>
       <td><%= user.finish.strftime("%X") %></td>
       <td><%= user.working_time %></td>
-      <td><%= link_to "編集", edit_shift_path(@shifts) %></td>
-      <td><%= link_to "削除", shift_path(@shifts), method: :delete %>, </td>
+      <td><%= link_to "編集", edit_shift_path(user) %></td>
+      <td><%= link_to "削除", shift_path(user), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>

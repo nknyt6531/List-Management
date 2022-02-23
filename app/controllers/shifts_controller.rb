@@ -17,15 +17,16 @@ class ShiftsController < ApplicationController
   end
 
   def show
-    @shift = Sfift.find(params[:id])
+    @shift = Shift.find(params[:id])
   end
 
   def edit
-    @shift = Sfift.find(params[:id])
+    @shift = Shift.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @shift = Sfift.find(params[:id])
+    @shift = Shift.find(params[:id])
     @shift.update
     redirect_to shifts_path
   end
