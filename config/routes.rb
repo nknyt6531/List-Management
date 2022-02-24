@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update]
   resources :shifts, only: [:index, :show, :create, :edit, :update, :destroy]
+  get 'statistics' => 'statistics#index'
 end

@@ -1,6 +1,6 @@
-<h4><%= @user.name %></h4>
+<h4 class="my-3 ml-3"><%= @user.name %></h4>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><%= @shift.date %></th>
@@ -9,6 +9,7 @@
       <th>開始</th>
       <th>終了</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,8 @@
     <tr>
       <td><%= f.time_field :start %></td>
       <td><%= f.time_field :finish %></td>
-      <td><%= f.submit '修正'%></td>
+      <td><%= f.submit '修正', class: "btn btn-success" %></td>
+      <td><%= link_to "削除", shift_path(@shift), method: :delete, class: "btn btn-danger" %></td></td>
     </tr>
     <% end %>
   </tbody>

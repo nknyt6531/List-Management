@@ -27,7 +27,7 @@ class ShiftsController < ApplicationController
 
   def update
     @shift = Shift.find(params[:id])
-    @shift.update
+    @shift.update(shift_params)
     redirect_to shifts_path
   end
 
@@ -40,7 +40,7 @@ class ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.require(:shift).permit(:date, :start, :finish).merge(user_id: current_user.id)
+    params.require(:shift).permit(:date, :start, :finish)
   end
 
 end
