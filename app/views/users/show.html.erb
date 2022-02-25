@@ -1,6 +1,44 @@
-<div>
-  <h3><%= @user.name %></h3>
+<h3><%= @user.name %></h3>
+
   <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  　<%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
-</div>
+
+<h3>通期成績</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>1st</th>
+      <th>稼働時間</th>
+      <th>コール数</th>
+      <th>コール数/h</th>
+      <th>コンタクト数</th>
+      <th>コンタクト数/h</th>
+      <th>コンタクト率</th>
+      <th>発送数</th>
+      <th>発送数/h</th>
+      <th>発送率</th>
+      <th>獲得件数</th>
+      <th>獲得率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><%= @user.name %></td>
+        <td><%= @user.%></td><!-- 稼働時間 -->
+        <td><%= @user.postcomments.where(created_at: this_month).count %></td><!-- コール数 -->
+        <td><%#= %></td><!-- 1時間あたりのコール数 -->
+        <td><%= @user.postcomments.where(target: 0, target: 1, created_at: this_month).count %></td><!-- コンタクト数 -->
+        <td><%#= %></td><!-- 1時間あたりのコンタクト数 -->
+        <td><%= @user.postcomments.where(target: 0, target: 1, created_at: this_month).count / 
+            @user.postcomments.where(created_at: this_month).count %></td><!-- コンタクト率 -->
+        <td><%= @user.postcomments.where(status: 4, created_at: this_month) %></td><!-- 発送数 -->
+        <td><%#= %></td><!-- 1時間あたりの発送数 -->
+        <td><%= @user.postcomments.where(status: 4, created_at: this_month) / 
+            @user.postcomments.where(target: 0, target: 1, created_at: this_month).count %></td><!-- 発送率 -->
+        <td><%= @user.postcomments.where(status2: 9, created_at: this_month).count %></td><!-- 獲得数 -->
+        <td></td>
+    </tr>
+  </tbody>
+</table>

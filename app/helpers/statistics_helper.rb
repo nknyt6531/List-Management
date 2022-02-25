@@ -48,7 +48,7 @@ module StatisticsHelper
   end
 
   def this_month
-    PostComment.where(created_at: @form...@to)
+    PostComment.where(created_at: @form...@to) #<!-- 当月のコメント作成 -->
   end
 
 end
