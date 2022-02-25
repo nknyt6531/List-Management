@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_23_074134) do
+ActiveRecord::Schema.define(version: 2022_02_25_064653) do
 
   create_table "customers", force: :cascade do |t|
     t.string "last_name", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_074134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
+    t.date "list_group"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_074134) do
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status2"
     t.index ["customer_id"], name: "index_post_comments_on_customer_id"
     t.index ["user_id"], name: "index_post_comments_on_user_id"
   end

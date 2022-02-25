@@ -1,0 +1,51 @@
+<h4>月別発送内訳</h4>
+
+<h4>通期発送内訳</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>発送数</th>
+      <th>留守1</th>
+      <th>留守2</th>
+      <th>留守3</th>
+      <th>留守4</th>
+      <th>再コール</th>
+      <th>検討中</th>
+      <th>勝負</th>
+      <th>獲得</th>
+      <th>NG</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.post_comments.where(status: 7, created_at: this_month).count %></td>
+      <td><%= user.post_comments.where(status: 1).count %></td>
+      <td><%= user.post_comments.where(status: 2).count %></td>
+      <td><%= user.post_comments.where(status: 3).count %></td>
+      <td><%= user.post_comments.where(status: 4).count %></td>
+      <td><%= user.post_comments.where(status: 6).count %></td>
+      <td><%= user.post_comments.where(status: 10).count %></td>
+      <td><%= user.post_comments.where(status: 12).count %></td>
+      <td><%= user.post_comments.where(status: 11).count %></td>
+      <td><%= user.post_comments.where(status: 5).count %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td>平均</td>
+      <td><%= get_sent_average * 100 %>%</td>
+      <td><%= absence1_average * 100 %>%</td>
+      <td><%= absence2_average * 100 %>%</td>
+      <td><%= absence3_average * 100 %>%</td>
+      <td><%= absence4_average * 100 %>%</td>
+      <td><%= again_average * 100 %>%</td>
+      <td><%= examination_average * 100 %>%</td>
+      <td><%= great_average * 100 %>%</td>
+      <td><%= acquired_average * 100 %>%</td>
+      <td><%= ng_average * 100 %>%</td>
+    </tr>
+  </tbody>
+</table>

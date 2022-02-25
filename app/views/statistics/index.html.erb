@@ -1,6 +1,57 @@
 <h4>通期発送内訳</h4>
 
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>発送数</th>
+      <th>留守1</th>
+      <th>留守2</th>
+      <th>留守3</th>
+      <th>留守4</th>
+      <th>再コール</th>
+      <th>検討中</th>
+      <th>勝負</th>
+      <th>獲得</th>
+      <th>NG</th>
+      <th>未荷電</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.post_comments.where(status: 4).count %></td><!-- 発送数 -->
+      <td><%= user.post_comments.where(status: 4, status2: 0).count %></td><!-- 留守1 -->
+      <td><%= user.post_comments.where(status: 4, status2: 1).count %></td><!-- 留守2 -->
+      <td><%= user.post_comments.where(status: 4, status2: 2).count %></td><!-- 留守3 -->
+      <td><%= user.post_comments.where(status: 4, status2: 3).count %></td><!-- 留守4 -->
+      <td><%= user.post_comments.where(status: 4, status2: 5).count %></td><!-- 再コール -->
+      <td><%= user.post_comments.where(status: 4, status2: 6).count %></td><!-- 検討中 -->
+      <td><%= user.post_comments.where(status: 4, status2: 7).count %></td><!-- 勝負 -->
+      <td><%= user.post_comments.where(status: 4, status2: 9).count %></td><!-- 獲得 -->
+      <td><%= user.post_comments.where(status: 4, status2: 4).count %></td><!-- NG -->
+      <td></td><!-- 未荷電 -->
+    </tr>
+  <% end %>
+    <tr>
+      <td>平均</td>
+      <td><%= get_sent_average * 100 %>%</td><!-- 発送数平均 -->
+      <td><%= absence1_average * 100 %>%</td><!-- 留守1平均 -->
+      <td><%= absence2_average * 100 %>%</td><!-- 留守2平均 -->
+      <td><%= absence3_average * 100 %>%</td><!-- 留守3平均 -->
+      <td><%= absence4_average * 100 %>%</td><!-- 留守4平均 -->
+      <td><%= again_average * 100 %>%</td><!-- 再コール平均 -->
+      <td><%= examination_average * 100 %>%</td><!-- 検討中平均 -->
+      <td><%= great_average * 100 %>%</td><!-- 勝負平均 -->
+      <td><%= acquired_average * 100 %>%</td><!-- 獲得平均 -->
+      <td><%= ng_average * 100 %>%</td><!-- NG平均 -->
+      <td></td><!-- 未荷電平均 -->
+    </tr>
+  </tbody>
+</table>
 
-<% @users each do |user| %>
-  <%= user.name %>
-  <%= user.staus %>
+<%# @users.each do |user| %>
+  <%#= user.name %>
+  <%#= user.post_comments.where(status: 7, created_at: Date).count %>
+<%# end %>
